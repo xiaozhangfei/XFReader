@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>Wifi传书</title>
+    <meta charset="utf-8">
+    <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">
+    <script src="/jquery.js"></script>
+    <style type="text/css">
+        input {
+            width: 400px;
+            height: 50px;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+        }
+    table {
+        float: left;
+        text-align: center;
+        width: 100%;
+        min-width: 900px;
+        border: 1px solid #99D3F5;
+        
+    }
+    .trs {
+        width: 49%;
+        border: 1px solid #99D3F5;
+        
+    }
+    #upDiv {
+        width:100%;
+        position:relative;
+        float:left;
+    }
+    .blockdiv {
+        position:relative;
+        float:left;
+        width:100%;
+        text-align:center;
+        margin-top:30px;
+    }
+    .imgIcon {
+        width:30px;
+        height:30px;
+    }
+    #refresh {
+        width: 100px;
+        height:50px;
+        border: 1px solid orange;
+        background-color:#99D3F5;
+        float:right;
+        margin-right:20px;
+    }
+    #refresh:hover {
+        background-color:white;
+    }
+    
+        </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+                        
+                          $("#reup").click(function(){
+                                            $.post("/ajax/up.html",
+                                                   {
+                                                        name:"Donald Duck",
+                                                        city:"Duckburg"
+                                                   },
+                                                   function(data,status){
+                                                        $("#upingfile").html("数据：" + data + "\n状态：" + status);
+                                                   });
+                                            });
+                          });
+        </script>
+</head>
+
+<body>
+    <h1 style="text-align:center">上传文件</h1>
+    <div id="upDiv">
+        
+        <table>
+            <tr>
+                <td  class="trs">
+                    <form action="">
+                        <input type="text" id="txt1" onkeyup="showHint(this.value)" />
+                    </form>
+                    <p>建议：<span id="txtHint"></span></p>
+                </td>
+                <td  class="trs">
+                    <input type="button" value="确认上传" id="btn"/>
+                </td>
+            </tr>
+        </table>
+        
+        <div id='upingfile' class="blockdiv"> hha</div>
+        <div id="assb" class="blockdiv">
+            <button id='reup' value='A'>上传</button>
+
+            <button id='refresh' value='A' onclick="showHint(this.value)">刷新</button>
+        </div>
+
+
+        <div id="filess" class="blockdiv">%filess%</div>
+    
+</body>
+
+</html>
